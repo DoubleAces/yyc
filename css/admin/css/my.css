@@ -1,0 +1,17 @@
+.admin-user-table {
+	border-color: #bce8f1;
+}
+
+.admin-user-table thead {
+	border-color: #bce8f1;
+	background-color: #d9edf7;
+}
+
+.admin-user-table thead tr th {
+	border-color: #bce8f1;
+	color: #31708f;
+}
+
+.admin-user-table tbody tr td {
+	border-color: #bce8f1;
+}

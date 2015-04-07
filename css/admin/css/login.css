@@ -1,0 +1,12 @@
+div#login-container {
+    margin: 250px auto 0;
+    width: 300px;
+    border: solid 1px seagreen;
+    border-radius: 5px;
+    padding: 20px;
+    background: lightgreen;
+    height: 160px;
+}
+.form-group:last-child {
+    margin-bottom: 0px;
+}

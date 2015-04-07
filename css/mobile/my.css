@@ -1,0 +1,119 @@
+::-webkit-input-placeholder { /* WebKit browsers */
+	color:    #FFF;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #FFF;
+	opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #FFF;
+	opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:    #FFF;
+}
+
+.homeLoginButton {
+	background: none;
+	border: solid 1px #FFF;
+	color: #FFF;
+	border-radius: 5px;
+	padding:9px 30px;
+	transition: all 0.3s;
+	font-weight: 100;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
+}
+
+.homeLoginButton:hover{
+	background:rgba(255, 255, 255, 0.35);
+	color:#000;
+	text-decoration: none;
+}
+
+.homeInput {
+	border-radius: 3px;
+	opacity: 0.8;
+	border: solid 1px #FFF !important;
+}
+
+.exerciseToolbar {
+	padding-top: 6px;
+	text-align: right;
+	font-size: 13px;
+	padding-bottom: 6px;
+	padding-right: 6px;
+}
+
+.exerciseDescription {
+	font-size: 14px;
+}
+
+.exercise {
+	font-size: 14px;
+}
+
+.exercise h3 {
+	color: #00BFF0;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+
+.exercise div {
+	border-bottom: 1px solid #B9DEEC;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.exercise .exerciseParams {
+	border-top: 1px solid #B9DEEC;
+}
+
+.exercise .exerciseParams li {
+	display: block;
+	margin-left: 0px;
+}
+
+.exercise .exerciseParams label {
+	margin-bottom: 0px;
+}
+
+#newExerciseContainer {
+	display: none;
+}
+
+.to textarea {
+	width: 93%;
+	font-size:0.85em;
+	margin: 10px 0;
+	border:none;
+	color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	outline: none;
+	background: #80dff8;
+	height: 100px;
+	padding:10px;
+	resize:none;
+}
+
+.to input[type="file"] {
+	padding:10px;
+	width:93%;
+	font-size:0.85em;
+	font-family: 'Open Sans', sans-serif;
+	margin: 10px 0;
+	border:none;
+	color: #fff;
+	background: #80dff8;
+	float: left;
+	outline: none;
+	width: 100%;
+}
+
+.to li {
+	list-style: none;
+}
