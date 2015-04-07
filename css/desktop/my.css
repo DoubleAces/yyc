@@ -8,6 +8,10 @@
 	color: red;
 }
 
+.soft-hidden {		/* Bootstrap has .hidden class that is suffixed with !important */
+	display: none;
+}
+
 
 
 /* Home page classes and overrides */
@@ -32,7 +36,7 @@ ul.blog-list li.no-list-style {
 
 /* Client training plans */
 
-.new-plan-button-container {
+.new-plan-button-container, .new-exercise-button-container {
 	width: 100%;
 	text-align: right;
 }
@@ -43,11 +47,7 @@ ul.blog-list li.no-list-style {
 	margin-bottom: 10px;
 }
 
-#newPlanFormContainer {
-	display: none;
-}
-
-#newPlanFormContainer form label {
+#newPlanFormContainer form label, #newExerciseFormContainer form label {
 	color: #777;
 	line-height: 2.8em;
 	font-size: 0.95em;
@@ -56,7 +56,7 @@ ul.blog-list li.no-list-style {
 	display: block;
 }
 
-#newPlanFormContainer textarea {
+#newPlanFormContainer textarea, #newExerciseFormContainer textarea {
 	background: #FFF;
 	outline-color: #00BFF0;
 	border: 1px solid #EEE;
@@ -67,7 +67,31 @@ ul.blog-list li.no-list-style {
 	font-size: 0.85em;
 }
 
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin-left: 10px;
+}
 
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0px;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.inputbox.file {
+	color: #777;
+	font-size: 0.75em;
+	line-height: 1.8em;
+	width: 87%;
+	margin-bottom: 10px;
+}
 
 
 

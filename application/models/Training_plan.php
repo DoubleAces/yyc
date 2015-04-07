@@ -48,10 +48,10 @@ class Training_Plan extends CI_Model {
 
 	function addExercise($planId, $input, $files = array()) {
 		$data = array(
-			'name' => $input->post('name'),
-			'description' => $input->post('description'),
-			'breathing' => $input->post('breathing'),
-			'reps' => $input->post('reps'),
+			'name' => $input['name'],
+			'description' => $input['description'],
+			'breathing' => $input['breathing'],
+			'reps' => $input['reps'],
 			'plan_id' => $planId
 		);
 		$this->db->insert('yyc_plan_exercises', $data);

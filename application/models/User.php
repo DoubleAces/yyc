@@ -54,12 +54,25 @@ class User extends CI_Model {
 		return self::$db->where(array('username' => $username))->get('yyc_users')->row(0, 'User');
 	}
 
+	/* Gets all the training plans for the user. Meant for the user view */
 	function getTrainingPlans() {
 		$this->load->model('training_plan');
 
 		$this->db->select("t1.id, t1.name, t1.description, t1.added, CONCAT(t2.first_name, ' ', t2.last_name) as trainer_name", false);
 		$this->db->from('yyc_training_plans as t1, yyc_users as t2');
 		$this->db->where('client_id = ' . $this->id . ' AND t1.trainer_id = t2.id');
+
+		return $this->db->get()->result('Training_Plan');
+	}
+
+	/* Gets all the training plans for the user for a specific trainer. Meant for the trainer clients view */
+	function getTrainingPlansByTrainer($trainerId) {
+		$this->load->model('training_plan');
+
+		$this->db->select("t1.id, t1.name, t1.description, t1.added");
+		$this->db->from('yyc_training_plans as t1');
+		$this->db->where('client_id', $this->id);
+		$this->db->where('trainer_id', $trainerId);
 
 		return $this->db->get()->result('Training_Plan');
 	}

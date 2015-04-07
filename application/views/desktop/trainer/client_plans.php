@@ -37,7 +37,7 @@
 				<div class="new-plan-button-container"><button class="btn btn-info" id="addPlan">Lisa uus kava</button></div>
 
 				<!--	New plan form 	-->
-				<div id="newPlanFormContainer" class="login-page override">
+				<div id="newPlanFormContainer" class="login-page override soft-hidden">
 					<div class="login-title">
 						<h4 class="title">Uue kava lisamine</h4>
 						<div class="loginbox">
