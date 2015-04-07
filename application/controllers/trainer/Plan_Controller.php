@@ -17,33 +17,6 @@ class Plan_Controller extends MY_Controller {
 		$this->imgError = str_replace('<p>', '<p class="label label-danger" style="display: block; font-size: 12px; font-weight: bold">', $err) . "\r\n";
 	}
 
-	private function _resize($fileName, $fileSize) {
-
-		$dimFolder = $fileSize . 'x' . $fileSize . '/';
-
-		$this->load->library('image_lib');
-		$config['image_library'] = 'gd2';
-		$config['source_image'] = $this->exerciseImageUploadPath . $fileName;
-		$config['new_image'] = $this->exerciseImageUploadPath . $dimFolder . $fileName;
-		$config['create_thumb'] = TRUE;
-		$config['maintain_ratio'] = TRUE;
-		$config['thumb_marker'] = '';
-		$config['width'] = $fileSize;
-		$config['height'] = $fileSize;
-		$config['x_axis'] = $fileSize;
-		$config['y_axis'] = $fileSize;
-
-		$this->image_lib->initialize($config);
-
-		if (!$this->image_lib->resize()) {
-			echo $this->image_lib->display_errors();
-			$this->image_lib->clear();
-			return;
-		}
-
-		$this->image_lib->clear();
-	}
-
 	/* Make sure the logged in user is trainer and the client belongs to him */
 	function verifyTrainer($trainer, $client) {
 
@@ -221,42 +194,7 @@ class Plan_Controller extends MY_Controller {
 				$this->load->library('upload', $config);
 
 				/* If picture is taken with phone or ipad, check for orientation and rotate if necessary */
-				$exif = exif_read_data($fileData['tmp_name']);
-
-				if (!empty($exif['Orientation'])) {
-					$curRotation = $exif['Orientation'];
-					if (isset($curRotation) && $curRotation != 1) {
-						$this->load->library('image_lib');
-
-						switch ($curRotation) {
-							case 6: {
-								$rotation = 270;
-								break;
-							}
-							case 3: {
-								$rotation = 180;
-								break;
-							}
-							case 8: {
-								$rotation = 90;
-								break;
-							}
-							default: {
-								$rotation = 0;
-								break;
-							}
-						}
-
-						$config['image_library'] = 'gd2';
-						$config['library_path'] = '/usr/bin/';
-						$config['source_image'] = $fileData['tmp_name'];
-						$config['rotation_angle'] = $rotation;
-						$this->image_lib->initialize($config);
-						if (!$this->image_lib->rotate()) {
-							echo $this->image_lib->display_errors();
-						}
-					}
-				}
+				rotateImageFromMobileDevice($fileData['tmp_name']);
 
 				/* Do upload */
 				if (!$this->upload->do_upload($key)) {
@@ -265,7 +203,7 @@ class Plan_Controller extends MY_Controller {
 				}
 				else {
 					$files[$i] = $this->upload->data();
-					$this->_resize($files[$i]['file_name'], 120);
+					resizeImage($this->exerciseImageUploadPath, $files[$i]['file_name'], 120);
 					$i++;
 				}
 			}
