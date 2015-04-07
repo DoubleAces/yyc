@@ -1,3 +1,23 @@
+<script>
+	$(function() {
+		var planButton = $('#addPlan');
+		var planContainer = $('#newPlanFormContainer');
+		planButton.click(function() {
+			if (planContainer.css('display') != 'block') {
+				planButton.html('Katkesta');
+				planButton.removeClass('btn-info').addClass('btn-danger');
+			}
+			else {
+				planButton.html('Lisa uus kava');
+				planButton.removeClass('btn-danger').addClass('btn-info');
+			}
+			planContainer.toggle({
+				easing: 'linear'
+			});
+
+		});
+	});
+</script>
 <div class="main">
 	<div class="container">
 		<div class="row single-top">
@@ -12,6 +32,30 @@
 			<!--	Content	-->
 
 			<div class="col-md-8">
+
+				<!--	New plan button	-->
+				<div class="new-plan-button-container"><button class="btn btn-info" id="addPlan">Lisa uus kava</button></div>
+
+				<!--	New plan form 	-->
+				<div id="newPlanFormContainer" class="login-page override">
+					<div class="login-title">
+						<h4 class="title">Uue kava lisamine</h4>
+						<div class="loginbox">
+							<form>
+								<fieldset class="input">
+									<p><input class="inputbox" name="plan_name" placeholder="Kava nimetus" /></p>
+									<p><textarea class="inputbox" name="plan_description" placeholder="Kava kirjeldus"></textarea></p>
+									<div class="new-plan-button-container">
+										<button type="button" class="btn btn-success btn-sm">Lisa kava</button>
+										<div class="clear"></div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<!--	Plans table	-->
 				<table>
 					<thead>
 						<tr>
@@ -26,6 +70,7 @@
 						<? endforeach ?>
 					</tbody>
 				</table>
+
 			</div>
 			<div class="clear"></div>
 
