@@ -1,3 +1,16 @@
+/* General classes */
+.textAlignLeft {
+	text-align: left;
+}
+
+/* Home page classes and overrides */
+.headingContainer {
+	padding-top: 0px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+}
+
+
 ::-webkit-input-placeholder { /* WebKit browsers */
 	color:    #FFF;
 }
@@ -131,8 +144,6 @@
 .exercise .exerciseParams label {
 	margin-bottom: 0px;
 }
-
-
 
 strong {
 	font-weight: bold;

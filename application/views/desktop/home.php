@@ -6,12 +6,12 @@
 
 			<div class="col-md-8">
 
-				<div class="content_left_text" style="padding-top: 0px; padding-bottom: 20px; padding-left: 0px;">
-					<h3 style="text-align: left">FitCom - Jaga ja motiveeri</h3>
-					<p style="text-align: left;">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+				<div class="content_left_text" class="headingContainer">
+					<h3 class="textAlignLeft">FitCom</h3>
+					<p class="textAlignLeft">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 				</div>
 
-				<h3 class="m_2" style="text-align: left">Treenerid</h3>
+				<h3 class="m_2 textAlignLeft">Treenerid</h3>
 				<div class="row about_box" style="padding-bottom: 5%; margin-bottom: 5%; border-bottom: 2px ridge #FFF; margin-right: 0px; margin-left: 0px;">
 					<div class="col-md-6" style="padding-left: 0px;">
 						<div class="box1">
