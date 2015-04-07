@@ -2,6 +2,9 @@
 .textAlignLeft {
 	text-align: left;
 }
+.redText {
+	color: red;
+}
 
 /* Home page classes and overrides */
 .headingContainer {

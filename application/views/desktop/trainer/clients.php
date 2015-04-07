@@ -24,7 +24,7 @@
 							<tr onclick="document.location.href='/my/clients/<?=$client->id?>'">
 								<td><?=$client->first_name?> <?=$client->last_name?></td>
 								<td><?=$client->email?></td>
-								<td style="color: red">Teadmata</td>
+								<td class="redText">Teadmata</td>
 							</tr>
 						<?endforeach?>
 					</tbody>
