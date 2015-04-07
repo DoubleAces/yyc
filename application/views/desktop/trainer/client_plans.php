@@ -61,12 +61,14 @@
 					<thead>
 						<tr>
 							<th>Nimi</th>
+							<th>Lisatud</th>
 						</tr>
 					</thead>
 					<tbody>
 						<? foreach ($plans as $plan): ?>
 							<tr onclick="document.location.href='/my/clients/<?= $client->id ?>/plans/<?= $plan->id ?>'">
 								<td><?= $plan->name ?></td>
+								<td><?= formatDate($plan->added) ?></td>
 							</tr>
 						<? endforeach ?>
 					</tbody>

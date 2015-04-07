@@ -32,6 +32,7 @@ class Training_Plan extends CI_Model {
 	}
 
 	function insert($clientId, $input) {
+
 		$dateObject = new DateTime('now');
 		$date = $dateObject->format('Y-m-d');
 		$data = array(
@@ -39,7 +40,7 @@ class Training_Plan extends CI_Model {
 			'client_id' => $clientId,
 			'name' => $input['plan_name'],
 			'description' => $input['plan_description'],
-			'added' => $dateObject
+			'added' => $date
 		);
 		$this->db->insert('yyc_training_plans', $data);
 		return $this->db->insert_id();
