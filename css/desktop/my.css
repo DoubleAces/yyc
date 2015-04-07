@@ -1,17 +1,35 @@
 /* General classes */
+
 .textAlignLeft {
 	text-align: left;
 }
+
 .redText {
 	color: red;
 }
 
+
+
 /* Home page classes and overrides */
+
 .headingContainer {
 	padding-top: 0px;
 	padding-bottom: 20px;
 	padding-left: 0px;
 }
+
+
+
+/* Menu classes and overrides */
+
+ul.blog-list li.no-list-style {
+	list-style: none;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+
+
+
 
 
 ::-webkit-input-placeholder { /* WebKit browsers */
