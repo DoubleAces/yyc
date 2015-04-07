@@ -41,16 +41,17 @@
 					<div class="login-title">
 						<h4 class="title">Uue kava lisamine</h4>
 						<div class="loginbox">
-							<form>
+							<?=form_open('/my/clients/plans/create', 'method="post"')?>
+								<input type="hidden" name="clientId" value="<?=$client->id?>">
 								<fieldset class="input">
 									<p><input class="inputbox" name="plan_name" placeholder="Kava nimetus" /></p>
 									<p><textarea class="inputbox" name="plan_description" placeholder="Kava kirjeldus"></textarea></p>
 									<div class="new-plan-button-container">
-										<button type="button" class="btn btn-success btn-sm">Lisa kava</button>
+										<button type="button" class="btn btn-success btn-sm" onclick="this.form.submit()">Lisa kava</button>
 										<div class="clear"></div>
 									</div>
 								</fieldset>
-							</form>
+							<?=form_close()?>
 						</div>
 					</div>
 				</div>

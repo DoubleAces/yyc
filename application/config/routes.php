@@ -72,6 +72,7 @@ $route['signup'] = "my/my/signup";
 $route['my/clients'] = "my/my/clients";
 $route['my/clients/(:num)'] = "trainer/client/index/$1";
 $route['my/clients/(:num)/plans'] = "trainer/client/plans/$1";
+$route['my/clients/plans/create'] = "trainer/client/createplan";
 
 /* User training */
 $route['my/training'] = "my/training/plans";

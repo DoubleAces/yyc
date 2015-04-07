@@ -8,7 +8,7 @@ class Training_Plan extends CI_Model {
 	function __construct() {
 		parent::__construct();
 		self::$db = &get_instance()->db;
-		$this->activeUser = $this->session->userdata('activeUser');
+		$this->activeUser = $this->session->activeUser;
 	}
 
 	function getById($planId) {
@@ -32,11 +32,14 @@ class Training_Plan extends CI_Model {
 	}
 
 	function insert($clientId, $input) {
+		$dateObject = new DateTime('now');
+		$date = $dateObject->format('Y-m-d');
 		$data = array(
 			'trainer_id' => $this->activeUser->id,
 			'client_id' => $clientId,
-			'name' => $input->post('plan_name'),
-			'description' => $input->post('plan_description')
+			'name' => $input['plan_name'],
+			'description' => $input['plan_description'],
+			'added' => $dateObject
 		);
 		$this->db->insert('yyc_training_plans', $data);
 		return $this->db->insert_id();
