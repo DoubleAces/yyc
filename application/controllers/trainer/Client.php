@@ -1,39 +1,1 @@
-<?
-class Client extends MY_Controller {
-
-	function __construct() {
-		parent::__construct();
-		enableProfiler();
-	}
-
-	function index($clientId) {
-
-		/* Check if user is logged in */
-		requireLogin();
-
-		/* Load the required models */
-		$this->load->model('user');
-
-		/* Load the client and trainer */
-		$user = $this->user->getById(activeUser()->id);
-		$client = $this->user->getById($clientId);
-
-		/* If the user is not trainer or the client doesn't belong to the trainer*/
-		if ($user->is_trainer == 0 or !$user->isTrainerOf($clientId)) {
-			$data = array(
-				'template' => platform() . '/my/permission_denied'
-			);
-			$this->load->view(platform() . '/page', $data);
-			return;
-		}
-
-		$data = array(
-			'client' => $client,
-			'template' => platform() . '/trainer/client'
-		);
-
-		/* Show template */
-		$this->load->view(platform() . '/page', $data);
-	}
-
-}
+<?class Client extends MY_Controller {	function __construct() {		parent::__construct();		enableProfiler();		/* Check if user is logged in */		requireLogin();	}	/* Make sure the logged in user is trainer and the client belongs to him */	function verifyTrainer($trainer, $client) {		if ($trainer->is_trainer == 0 or !$trainer->isTrainerOf($client)) {			$data = array(				'template' => platform() . '/my/permission_denied'			);			$this->load->view(platform() . '/page', $data);			return false;		}		return true;	}	/* Client overview */	function index($clientId) {		/* Load the required models */		$this->load->model('user');		/* Load the client and trainer */		$user = $this->user->getById(activeUser()->id);		$client = $this->user->getById($clientId);		/* Make sure the logged in user is trainer and the client belongs to him */		if (!$this->verifyTrainer($user, $client->id)) {			return;		}		$data = array(			'client' => $client,			'template' => platform() . '/trainer/client'		);		/* Show template */		$this->load->view(platform() . '/page', $data);	}	/* Client training plans */	function plans($clientId) {		/* Load the required models */		$this->load->model('user');		/* Load the client and trainer */		$user = $this->user->getById(activeUser()->id);		$client = $this->user->getById($clientId);		/* Make sure the logged in user is trainer and the client belongs to him */		if (!$this->verifyTrainer($user, $client->id)) {			return;		}		$data = array(			'client' => $client,			'plans' => $client->getTrainingPlans(),			'template' => platform() . '/trainer/client_plans'		);		/* Show template */		$this->load->view(platform() . '/page', $data);	}}
