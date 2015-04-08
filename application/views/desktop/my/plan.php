@@ -14,8 +14,8 @@
 		/* More pics link */
 		var morePicsLink = $('.more-pics');
 		morePicsLink.click(function() {
-			var pics = $(this).parents().find('.exercise-images').find('span');
 
+			var pics = $(this).parent().parent().find('span');
 			if ($(this).hasClass('less')) {
 				pics.each(function(i, pic) {
 					if (i > 1) {
