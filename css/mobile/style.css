@@ -3165,7 +3165,7 @@ input.inputbox, input.required, div.k2AccountPage input[type="text"] {
 	border: 1px solid #EEE;
 	color: inherit;
 	padding: 7px 20px;
-	width:84%;
+	width:100%;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 0.85em;
 	-webkit-appearance: none;

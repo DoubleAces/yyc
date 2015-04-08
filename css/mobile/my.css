@@ -1,4 +1,23 @@
+/* General classes */
+
+.textAlignLeft {
+	text-align: left;
+}
+
+.redText {
+	color: red;
+}
+
+.soft-hidden {		/* Bootstrap has .hidden class that is suffixed with !important */
+	display: none;
+}
+
+
 /* Client training plans */
+
+.login-page p {
+	line-height: 3em;
+}
 
 .new-plan-button-container, .new-exercise-button-container {
 	width: 100%;
@@ -53,7 +72,7 @@
 	color: #777;
 	font-size: 0.75em;
 	line-height: 1.8em;
-	width: 87%;
+	width: auto;
 	margin-bottom: 10px;
 }
 
