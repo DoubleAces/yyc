@@ -1,119 +1,159 @@
-::-webkit-input-placeholder { /* WebKit browsers */
-	color:    #FFF;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	color:    #FFF;
-	opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-	color:    #FFF;
-	opacity:  1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-	color:    #FFF;
-}
+/* Client training plans */
 
-.homeLoginButton {
-	background: none;
-	border: solid 1px #FFF;
-	color: #FFF;
-	border-radius: 5px;
-	padding:9px 30px;
-	transition: all 0.3s;
-	font-weight: 100;
-	text-transform: uppercase;
-	margin-bottom: 10px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-top: 10px;
-}
-
-.homeLoginButton:hover{
-	background:rgba(255, 255, 255, 0.35);
-	color:#000;
-	text-decoration: none;
-}
-
-.homeInput {
-	border-radius: 3px;
-	opacity: 0.8;
-	border: solid 1px #FFF !important;
-}
-
-.exerciseToolbar {
-	padding-top: 6px;
+.new-plan-button-container, .new-exercise-button-container {
+	width: 100%;
 	text-align: right;
-	font-size: 13px;
-	padding-bottom: 6px;
-	padding-right: 6px;
 }
 
-.exerciseDescription {
-	font-size: 14px;
-}
-
-.exercise {
-	font-size: 14px;
-}
-
-.exercise h3 {
-	color: #00BFF0;
-	font-size: 1.2em;
-	text-transform: uppercase;
+.login-page.override {
+	border-radius: 5px;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-.exercise div {
-	border-bottom: 1px solid #B9DEEC;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-
-.exercise .exerciseParams {
-	border-top: 1px solid #B9DEEC;
-}
-
-.exercise .exerciseParams li {
+#newPlanFormContainer form label, #newExerciseFormContainer form label {
+	color: #777;
+	line-height: 2.8em;
+	font-size: 0.95em;
+	font-weight: 400;
+	margin: 0;
 	display: block;
-	margin-left: 0px;
 }
 
-.exercise .exerciseParams label {
+#newPlanFormContainer textarea, #newExerciseFormContainer textarea {
+	background: #FFF;
+	outline-color: #00BFF0;
+	border: 1px solid #EEE;
+	color: inherit;
+	padding: 7px 20px;
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.85em;
+}
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin-left: 10px;
+}
+
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0px;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.inputbox.file {
+	color: #777;
+	font-size: 0.75em;
+	line-height: 1.8em;
+	width: 87%;
+	margin-bottom: 10px;
+}
+
+ul.blog-list li.no-list-style {
+	list-style: none;
+	margin-left: 0px;
 	margin-bottom: 0px;
 }
 
-#newExerciseContainer {
-	display: none;
-}
-
-.to textarea {
-	width: 93%;
-	font-size:0.85em;
-	margin: 10px 0;
-	border:none;
-	color: #fff;
-	font-family: 'Open Sans', sans-serif;
-	outline: none;
-	background: #80dff8;
-	height: 100px;
-	padding:10px;
-	resize:none;
-}
-
-.to input[type="file"] {
-	padding:10px;
-	width:93%;
-	font-size:0.85em;
-	font-family: 'Open Sans', sans-serif;
-	margin: 10px 0;
-	border:none;
-	color: #fff;
-	background: #80dff8;
-	float: left;
-	outline: none;
+table {
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	text-align: left;
 	width: 100%;
 }
 
-.to li {
-	list-style: none;
+th {
+	background: url(../../images/desktop/table-noise.png), linear-gradient(#00BFF0, #00BFF0);
+	border-left: 1px solid #FFF;
+
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;
+}
+
+th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+th:first-child {
+	border-left: 1px solid #FFF;
+	box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}
+
+td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
+}
+
+tr {
+	background: url(../../images/desktop/table-noise.png);
+}
+
+tr:nth-child(odd) td {
+	background: #f1f1f1 url(../../images/desktop/table-noise.png);
+}
+
+tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff;
+}
+
+tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}
+
+tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}
+
+tbody:hover td {
+	/*color: transparent;*/
+	text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+	cursor: pointer;
 }
