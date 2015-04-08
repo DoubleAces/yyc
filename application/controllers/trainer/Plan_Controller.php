@@ -240,4 +240,26 @@ class Plan_Controller extends MY_Controller {
 		redirect('/my/clients/' . $clientId . '/plans/' . $planId);
 	}
 
+	/* Delete exercise from training plan */
+	function delete_exercise($exerciseId) {
+
+		/* Load models necessary for this method */
+		$this->load->model('exercise');
+
+		$exercise = $this->exercise->getById($exerciseId);
+		$plan = $exercise->getPlan();
+		$client = $plan->getClient();
+		$user = $this->user->getById(activeUser()->id);
+
+		/* Make sure the logged in user is trainer and the client belongs to him */
+		if (!$this->verifyTrainer($user, $client->id)) {
+			return;
+		}
+
+		if (!$exercise->delete()) {
+			echo 'Something went wrong while deleting exercise';
+			return;
+		}
+		redirect('/my/clients/' . $client->id . '/plans/' . $plan->id);
+	}
 }

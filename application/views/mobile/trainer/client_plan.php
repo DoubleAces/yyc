@@ -41,12 +41,31 @@
 		/* Magnific */
 		$('.exercise-images').each(function() {
 			$(this).magnificPopup({
-				delegate: 'a',
+				delegate: 'span a',
 				type: 'image',
 				gallery: {
 					enabled: true
 				}
 			});
+		});
+
+		/* More pics link */
+		var morePicsLink = $('.more-pics');
+		morePicsLink.click(function() {
+
+			var pics = $(this).parent().parent().find('span');
+			if ($(this).hasClass('less')) {
+				pics.each(function(i, pic) {
+					if (i > 1) {
+						$(pic).hide();
+					}
+				});
+				$(this).removeClass('less').text('Veel pilte');
+			}
+			else {
+				pics.show({easing: 'linear'});
+				$(this).addClass('less').text('Vähem pilte');
+			}
 		});
 	});
 </script>
@@ -74,76 +93,78 @@
 						<h4 class="title">Uue harjutuse lisamine</h4>
 						<div class="loginbox">
 							<?=form_open_multipart('/my/clients/plans/add-exercise', 'method="post"')?>
-							<input type="hidden" name="clientId" value="<?=$client->id?>">
-							<input type="hidden" name="planId" value="<?=$plan->id?>">
-							<fieldset class="input">
-								<p><?=form_error('name')?><input type="text" class="inputbox" name="name" placeholder="Harjutuse nimi"></p>
-								<p><input type="text" class="inputbox" name="breathing" placeholder="Hingamine"></p>
-								<p><input type="text" class="inputbox" name="reps" placeholder="Korduseid"></p>
-								<p><textarea class="inputbox" name="description" placeholder="Harjutuse kirjeldus"></textarea></p>
+								<input type="hidden" name="clientId" value="<?=$client->id?>">
+								<input type="hidden" name="planId" value="<?=$plan->id?>">
+								<fieldset class="input">
+									<p><?=form_error('name')?><input type="text" class="inputbox" name="name" placeholder="Harjutuse nimi"></p>
+									<p><input type="text" class="inputbox" name="breathing" placeholder="Hingamine"></p>
+									<p><input type="text" class="inputbox" name="reps" placeholder="Korduseid"></p>
+									<p><textarea class="inputbox" name="description" placeholder="Harjutuse kirjeldus"></textarea></p>
 
-								<?
-								for ($i = 1; $i <= $allowedImageCount; $i++) {
+									<?
+									for ($i = 1; $i <= $allowedImageCount; $i++) {
+										?>
+										<input type="text" class="file-<?=$i?> inputbox file <?=$i == 1 ? '' : 'hidden'?>" placeholder="Vali fail" disabled="disabled" />
+										<div class="fileUpload btn btn-primary <?=$i == 1 ? '' : 'hidden'?>">
+											<span>Vali fail</span>
+											<input type="file" class="upload file-<?=$i?>" name="photo<?=$i?>" />
+										</div>
+										<?
+									}
 									?>
-									<input type="text" class="file-<?=$i?> inputbox file <?=$i == 1 ? '' : 'hidden'?>" placeholder="Vali fail" disabled="disabled" />
-									<div class="fileUpload btn btn-primary <?=$i == 1 ? '' : 'hidden'?>">
-										<span>Vali fail</span>
-										<input type="file" class="upload file-<?=$i?>" name="photo<?=$i?>" />
-									</div>
-								<?
-								}
-								?>
 
-								<div>
-									<button type="button" class="btn btn-success btn-sm" onclick="this.form.submit()">Lisa harjutus</button>
-									<div class="clear"></div>
-								</div>
-							</fieldset>
+									<div>
+										<button type="button" class="btn btn-success btn-sm" onclick="this.form.submit()">Lisa harjutus</button>
+										<div class="clear"></div>
+									</div>
+								</fieldset>
 							<?=form_close()?>
 						</div>
 					</div>
 				</div>
-
 
 				<?foreach($exercises as $exercise) :
 					?>
 
 					<table>
 						<thead>
-						<tr>
-							<th><?=$exercise->name?></th>
-							<th style="width: 10%; text-shadow: 0 1px 0 #FFF"><a href="/my/clients/plans/delete_exercise/<?=$exercise->id?>" style="color: red">Kustuta</a></th>
-						</tr>
+							<tr>
+								<th><?=$exercise->name?></th>
+								<th style="width: 10%; text-shadow: 0 1px 0 #FFF"><a href="/my/clients/plans/delete_exercise/<?=$exercise->id?>" style="color: red">Kustuta</a></th>
+							</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td colspan="2">
-								<div class="pull-left" style="width: 63%">
-									<?
-									if ($exercise->reps) {
-										?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
-									}
-									if ($exercise->breathing) {
-										?><label>Hingamine: </label> <?=$exercise->breathing;
-									}
-									if ($exercise->description) {
-										?><br /><?=$exercise->description;
-									}
-									?>
-								</div>
-								<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
-									foreach ($exercise->images as $image) :
+							<tr>
+								<td colspan="2">
+									<div class="pull-left" style="width: 63%">
+										<?
+										if ($exercise->reps) {
+											?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
+										}
+										if ($exercise->breathing) {
+											?><label>Hingamine: </label> <?=$exercise->breathing;
+										}
+										if ($exercise->description) {
+											?><br /><?=$exercise->description;
+										}
 										?>
-										<span style="margin-left: 10px;"><a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img alt="Harjutuse pilt" src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a></span>
-									<?
-									endforeach
-									?>
-								</div>
-							</td>
-						</tr>
+									</div>
+									<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
+										$i = 0;
+										foreach ($exercise->images as $image) :
+											?><span style="margin-left: 10px; <?=$i > 1 ? 'display: none' : ''?>"><a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img alt="Harjutuse pilt" src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a></span><?
+											$i++;
+										endforeach;
+										if ($exercise->imageCount > 2) {
+											?><div><a class="more-pics">Veel pilte</a></div><?
+										}
+										?>
+									</div>
+								</td>
+							</tr>
 						</tbody>
 					</table>
-				<?
+					<?
 				endforeach?>
 
 			</div>

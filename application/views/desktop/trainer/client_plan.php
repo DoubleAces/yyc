@@ -41,12 +41,31 @@
 		/* Magnific */
 		$('.exercise-images').each(function() {
 			$(this).magnificPopup({
-				delegate: 'a',
+				delegate: 'span a',
 				type: 'image',
 				gallery: {
 					enabled: true
 				}
 			});
+		});
+
+		/* More pics link */
+		var morePicsLink = $('.more-pics');
+		morePicsLink.click(function() {
+
+			var pics = $(this).parent().parent().find('span');
+			if ($(this).hasClass('less')) {
+				pics.each(function(i, pic) {
+					if (i > 1) {
+						$(pic).hide();
+					}
+				});
+				$(this).removeClass('less').text('Veel pilte');
+			}
+			else {
+				pics.show({easing: 'linear'});
+				$(this).addClass('less').text('Vähem pilte');
+			}
 		});
 	});
 </script>
@@ -131,12 +150,15 @@
 										?>
 									</div>
 									<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
-									foreach ($exercise->images as $image) :
+										$i = 0;
+										foreach ($exercise->images as $image) :
+											?><span style="margin-left: 10px; <?=$i > 1 ? 'display: none' : ''?>"><a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img alt="Harjutuse pilt" src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a></span><?
+											$i++;
+										endforeach;
+										if ($exercise->imageCount > 2) {
+											?><div><a class="more-pics">Veel pilte</a></div><?
+										}
 										?>
-											<span style="margin-left: 10px;"><a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img alt="Harjutuse pilt" src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a></span>
-										<?
-									endforeach
-									?>
 									</div>
 								</td>
 							</tr>

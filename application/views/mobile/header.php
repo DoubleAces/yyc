@@ -6,14 +6,12 @@
 		<nav class="nav">
 			<a href="#" id="w3-menu-trigger"> </a>
 			<ul class="nav-list nav" id="nav">
-				<li class="nav-item current"><a href="index.html">Home</a></li>
-				<li class="nav-item"><a href="about.html">About</a></li>
-				<li class="nav-item"><a href="trainers.html">Trainers</a></li>
-				<li class="nav-item"><a href="classes.html">Classes</a></li>
-				<li class="nav-item"><a href="blog.html">Blog</a></li>
-				<li class="nav-item"><a href="pricing.html">Pricing</a></li>
-				<li class="nav-item"><a href="contact.html">Contact</a></li>
-				<li class="nav-item"><a href="/home/logout">Logout</a></li>
+				<li class="nav-item <?if($this->router->fetch_class() == 'home') { ?>current<? }?>"><a href="/home">Avaleht</a></li>
+				<li class="nav-item"><a href="#">Treenerid</a></li>
+				<li class="nav-item"><a href="#">Blogid</a></li>
+				<li class="nav-item"><a href="#">Artiklid</a></li>
+				<li class="nav-item"><a href="#">Retseptid</a></li>
+				<li class="nav-item" <?if(in_array($this->router->fetch_class(), array('my', 'client'))) { ?>class="active"<? }?>><a href="/login">Minu konto</a></li>
 			</ul>
 		</nav>
 		<div class="clear"> </div>
