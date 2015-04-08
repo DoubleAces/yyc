@@ -1,5 +1,7 @@
 <script>
 	$(function() {
+
+		/* Enable/disable the add exercise form */
 		var exerciseButton = $('#addExercise');
 		var exerciseContainer = $('#newExerciseFormContainer');
 		exerciseButton.click(function() {
@@ -16,6 +18,7 @@
 			});
 		});
 
+		/* Adding new image upload boxes */
 		$('.upload').live('change', function(e) {
 			var currentBox = $(e.currentTarget);
 			var currentValue = currentBox.val();
@@ -34,6 +37,16 @@
 			}
 		});
 
+		/* Magnific */
+		$('.exercise-images').each(function() {
+			$(this).magnificPopup({
+				delegate: 'a',
+				type: 'image',
+				gallery: {
+					enabled: true
+				}
+			});
+		});
 	});
 </script>
 <div class="main">
@@ -90,7 +103,9 @@
 					</div>
 				</div>
 
-				<?foreach($exercises as $exercise) :?>
+				<?foreach($exercises as $exercise) :
+					$i = 0;
+					?>
 
 					<table>
 						<thead>
@@ -99,11 +114,34 @@
 							</tr>
 						</thead>
 						<tbody>
-							<td></td>
+							<td>
+								<div class="pull-left" style="width: 63%">
+									<?
+									if ($exercise->reps) {
+										?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
+									}
+									if ($exercise->breathing) {
+										?><label>Hingamine: </label> <?=$exercise->breathing;
+									}
+									if ($exercise->description) {
+										?><br /><?=$exercise->description;
+									}
+									?>
+								</div>
+								<div class="pull-right exercise-images" counter="<?=$i?>" style="width: 37%; text-align: right"><?
+								foreach ($exercise->images as $image) :
+									?>
+										<span style="margin-left: 10px;"><a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a></span>
+									<?
+								endforeach
+								?>
+								</div>
+							</td>
 						</tbody>
 					</table>
-
-				<?endforeach?>
+					<?
+					$i++;
+				endforeach?>
 
 			</div>
 			<div class="clear"></div>
