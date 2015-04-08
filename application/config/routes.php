@@ -75,6 +75,7 @@ $route['my/clients/(:num)/plans'] = "trainer/plan_controller/index/$1";
 $route['my/clients/plans/create'] = "trainer/plan_controller/create";
 $route['my/clients/(:num)/plans/(:num)'] = "trainer/plan_controller/plan/$1/$2";
 $route['my/clients/plans/add-exercise'] = "trainer/plan_controller/add_exercise";
+$route['my/clients/plans/delete_exercise/(:num)'] = "trainer/plan_controller/delete_exercise/$1";
 
 /* User training */
 $route['my/training'] = "my/training/plans";

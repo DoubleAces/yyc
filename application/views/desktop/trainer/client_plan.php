@@ -111,7 +111,7 @@
 						<thead>
 							<tr>
 								<th><?=$exercise->name?></th>
-								<th style="width: 10%; color: red; text-shadow: 0 1px 0 #FFF">Kustuta</th>
+								<th style="width: 10%; text-shadow: 0 1px 0 #FFF"><a href="/my/clients/plans/delete_exercise/<?=$exercise->id?>" style="color: red">Kustuta</a></th>
 							</tr>
 						</thead>
 						<tbody>
