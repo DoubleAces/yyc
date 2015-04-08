@@ -5,6 +5,6 @@
 		?><li><a href="/my/clients">Kliendid</a></li><?
 	}
 	?>
-	<li><a href="/my/training">Treeningkavad</a></li>
+	<li><a href="/my/training">Minu treeningkavad</a></li>
 	<li><a href="/logout">Logout</a></li>
 </ul>
