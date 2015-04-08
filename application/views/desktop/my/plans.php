@@ -24,6 +24,7 @@
 						<tr>
 							<th>Treener</th>
 							<th>Treeningkava</th>
+							<th>Loodud</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,6 +32,7 @@
 							<tr plan="<?=$plan->id?>">
 								<td><?=$plan->trainer_name?></td>
 								<td><?=$plan->name?></td>
+								<td><?=formatDate($plan->added)?></td>
 							</tr>
 						<?endforeach?>
 					</tbody>

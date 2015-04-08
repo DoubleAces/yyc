@@ -40,10 +40,19 @@ class Training extends MY_Controller {
 			return;
 		}
 
+		/* Get the exercises for this training plan */
+		$exercises = $plan->getExercises();
+		foreach ($exercises AS $exercise) {
+			$images = $exercise->getImages();
+			$exercise->images = $images;
+			$exercise->imageCount = count($images);
+		}
+
 		/* Assign data to training plans template */
 		$data = array(
 			'template' => platform() . '/my/plan',
-			'plan' => $plan
+			'plan' => $plan,
+			'exercises' => $exercises
 		);
 
 		/* Show training plans template */
