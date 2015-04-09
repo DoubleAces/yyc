@@ -18,7 +18,7 @@ class Training_Plan extends CI_Model {
 
 	function getExercises() {
 		$this->load->model('Exercise');
-		$this->db->select('id, plan_id, name, description, breathing, reps');
+		$this->db->select('id, plan_id, name, description, breathing');
 		$this->db->from('yyc_plan_exercises');
 		$this->db->where('plan_id', $this->id);
 		return $this->db->get()->result('Exercise');
@@ -51,16 +51,27 @@ class Training_Plan extends CI_Model {
 			'name' => $input['name'],
 			'description' => $input['description'],
 			'breathing' => $input['breathing'],
-			'reps' => $input['reps'],
 			'plan_id' => $planId
 		);
 		$this->db->insert('yyc_plan_exercises', $data);
+		$exerciseId = $this->db->insert_id();
+
+		/* Add sets to exercise */
+		$setCount = count($input['sets']);
+		for ($i = 0; $i < $setCount; $i++) {
+			$data = array(
+				'exercise_id' => $exerciseId,
+				'reps' => $input['reps'][$i],
+				'sets' => $input['sets'][$i],
+				'weight' => $input['weight'][$i]
+			);
+			$this->db->insert('yyc_plan_exercise_sets', $data);
+		}
 
 		if (!count($files)) {
 			return TRUE;
 		}
 
-		$exerciseId = $this->db->insert_id();
 		$this->db->trans_start();
 		$file_data = array();
 		foreach ($files as $file) {

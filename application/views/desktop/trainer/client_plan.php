@@ -30,10 +30,10 @@
 									<p><?=form_error('name')?><input type="text" class="inputbox" name="name" placeholder="Harjutuse nimi"></p>
 									<p><input type="text" class="inputbox" name="breathing" placeholder="Hingamine"></p>
 									<p>
-										<input type="text" class="inputbox" name="sets" placeholder="Seeriaid" style="width: 15%; text-align: center;">
+										<input type="text" class="inputbox" name="sets[]" placeholder="Seeriaid" style="width: 15%; text-align: center;">
 										&nbsp;x&nbsp;
-										<input type="text" class="inputbox" name="reps" placeholder="Korduseid" style="width: 15%; text-align: center;">
-										<input type="text" class="inputbox" name="weight" placeholder="Raskus" style="width: 15%; text-align: center;">&nbsp;kg
+										<input type="text" class="inputbox" name="reps[]" placeholder="Korduseid" style="width: 15%; text-align: center;">
+										<input type="text" class="inputbox" name="weight[]" placeholder="Raskus" style="width: 15%; text-align: center;">&nbsp;kg
 										<input type="button" class="btn btn-danger pull-right" id="removeSetButton" value="Eemalda" style="margin-left: 10px; display: none;" />
 										<input type="button" class="btn btn-info pull-right" id="addSetButton" value="Lisa" />
 									</p>
@@ -76,9 +76,6 @@
 								<td colspan="2">
 									<div class="pull-left" style="width: 63%">
 										<?
-										if ($exercise->reps) {
-											?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
-										}
 										if ($exercise->breathing) {
 											?><label>Hingamine: </label> <?=$exercise->breathing;
 										}
