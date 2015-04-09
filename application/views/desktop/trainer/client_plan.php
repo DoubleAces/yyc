@@ -1,74 +1,5 @@
-<script>
-	$(function() {
-
-		/* Enable/disable the add exercise form */
-		var exerciseButton = $('#addExercise');
-		var exerciseContainer = $('#newExerciseFormContainer');
-		exerciseButton.click(function() {
-			if (exerciseContainer.css('display') != 'block') {
-				exerciseButton.html('Katkesta');
-				exerciseButton.removeClass('btn-info').addClass('btn-danger');
-			}
-			else {
-				exerciseButton.html('Lisa uus kava');
-				exerciseButton.removeClass('btn-danger').addClass('btn-info');
-			}
-			exerciseContainer.toggle({
-				easing: 'linear'
-			});
-		});
-
-		/* Adding new image upload boxes */
-		$('.upload').live('change', function(e) {
-			var currentBox = $(e.currentTarget);
-			var currentValue = currentBox.val();
-
-			var currentCounter = parseInt(currentBox.attr('class').split('-')[1]);
-			var fileStrBox = $('input[type="text"][class^=file-' + currentCounter + ']');
-			fileStrBox.val(currentValue);
-			if (currentCounter == <?=$allowedImageCount?>) {
-				return;
-			}
-			var nextBox = $('input[type="text"][class^=file-' + (currentCounter + 1) + ']');
-			var nextButton = $('input[type="file"][class$=file-' + (currentCounter + 1) + ']');
-
-			if (nextBox.css('display') == 'none') {
-				nextBox.removeClass('hidden');
-				nextButton.parent().removeClass('hidden');
-			}
-		});
-
-		/* Magnific */
-		$('.exercise-images').each(function() {
-			$(this).magnificPopup({
-				delegate: 'span a',
-				type: 'image',
-				gallery: {
-					enabled: true
-				}
-			});
-		});
-
-		/* More pics link */
-		var morePicsLink = $('.more-pics');
-		morePicsLink.click(function() {
-
-			var pics = $(this).parent().parent().find('span');
-			if ($(this).hasClass('less')) {
-				pics.each(function(i, pic) {
-					if (i > 1) {
-						$(pic).hide();
-					}
-				});
-				$(this).removeClass('less').text('Veel pilte');
-			}
-			else {
-				pics.show({easing: 'linear'});
-				$(this).addClass('less').text('Vähem pilte');
-			}
-		});
-	});
-</script>
+<script src="<?=base_url()?>js/trainer/addExercise.js"></script>
+<input type="hidden" id="exerciseAllowedImageCount" value="<?=$allowedImageCount?>" />
 <div class="main">
 	<div class="container">
 		<div class="row single-top">
@@ -88,7 +19,7 @@
 				<div class="new-exercise-button-container"><button class="btn <?=$addFormOpen ? 'btn-danger' : 'btn-info'?>" id="addExercise"><?=$addFormOpen ? 'Katkesta' : 'Lisa uus harjutus'?></button></div>
 
 				<!--	New plan form 	-->
-				<div id="newExerciseFormContainer" class="login-page override <?=($addFormOpen ? '' : "soft-hidden")?>">
+				<div id="newExerciseFormContainer" class="login-page override <?=(!$addFormOpen ? '' : "soft-hidden")?>">
 					<div class="login-title">
 						<h4 class="title">Uue harjutuse lisamine</h4>
 						<div class="loginbox">
@@ -98,7 +29,14 @@
 								<fieldset class="input">
 									<p><?=form_error('name')?><input type="text" class="inputbox" name="name" placeholder="Harjutuse nimi"></p>
 									<p><input type="text" class="inputbox" name="breathing" placeholder="Hingamine"></p>
-									<p><input type="text" class="inputbox" name="reps" placeholder="Korduseid"></p>
+									<p>
+										<input type="text" class="inputbox" name="sets" placeholder="Seeriaid" style="width: 15%; text-align: center;">
+										&nbsp;x&nbsp;
+										<input type="text" class="inputbox" name="reps" placeholder="Korduseid" style="width: 15%; text-align: center;">
+										<input type="text" class="inputbox" name="weight" placeholder="Raskus" style="width: 15%; text-align: center;">&nbsp;kg
+										<input type="button" class="btn btn-danger pull-right" id="removeSetButton" value="Eemalda" style="margin-left: 10px; display: none;" />
+										<input type="button" class="btn btn-info pull-right" id="addSetButton" value="Lisa" />
+									</p>
 									<p><textarea class="inputbox" name="description" placeholder="Harjutuse kirjeldus"></textarea></p>
 
 									<?
