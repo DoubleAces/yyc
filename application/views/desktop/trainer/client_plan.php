@@ -82,9 +82,9 @@
 										if ($exercise->description) {
 											?><br /><?=$exercise->description;
 										}
-//										foreach ($exercise->getSets() as $set) {
-//											echo $set;
-//										}
+										foreach ($exercise->getSets() as $set) {
+											echo $set->sets . ' x ' . $set->reps . ' @ ' . $set->weight . 'kg <br>';
+										}
 										?>
 									</div>
 									<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
