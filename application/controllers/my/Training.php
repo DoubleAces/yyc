@@ -36,7 +36,6 @@ class Training extends MY_Controller {
 
 		/* If the training plan does not belong to the active user */
 		if (activeUser()->id != $plan->client_id) {
-			echo "sitt majas";
 			return;
 		}
 

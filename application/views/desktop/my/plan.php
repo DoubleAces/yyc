@@ -57,9 +57,15 @@
 							<tr>
 								<td>
 									<div class="pull-left" style="width: 63%">
+										<label style="width: 100%">Korduseid:</label>
 										<?
-										if ($exercise->reps) {
-											?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
+										foreach ($exercise->getSets() as $set) {
+											echo $set->sets . ' x ';
+											echo $set->reps ;
+											if ($set->weight) {
+												echo ' @ ' . $set->weight . 'kg';
+											}
+											?><br /><?
 										}
 										if ($exercise->breathing) {
 											?><label>Hingamine: </label> <?=$exercise->breathing;
