@@ -68,22 +68,28 @@
 						<thead>
 							<tr>
 								<th><?=$exercise->name?></th>
-								<th style="width: 10%; text-shadow: 0 1px 0 #FFF"><a href="/my/clients/plans/delete_exercise/<?=$exercise->id?>" style="color: red">Kustuta</a></th>
+								<th style="width: 10%; text-shadow: 0 1px 0 #FFF"><a href="/my/clients/plans/delete_exercise/<?=$exercise->id?>" style="color: red" onclick="return confirm('Kustutada harjutus?')">Kustuta</a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td colspan="2">
 									<div class="pull-left" style="width: 63%">
+										<label style="width: 100%">Korduseid:</label>
 										<?
+										foreach ($exercise->getSets() as $set) {
+											echo $set->sets . ' x ';
+											echo $set->reps ;
+											if ($set->weight) {
+												echo ' @ ' . $set->weight . 'kg';
+											}
+											?><br /><?
+										}
 										if ($exercise->breathing) {
 											?><label>Hingamine: </label> <?=$exercise->breathing;
 										}
 										if ($exercise->description) {
 											?><br /><?=$exercise->description;
-										}
-										foreach ($exercise->getSets() as $set) {
-											echo $set->sets . ' x ' . $set->reps . ' @ ' . $set->weight . 'kg <br>';
 										}
 										?>
 									</div>

@@ -30,6 +30,9 @@ class Exercise extends CI_Model {
 			$image->delete();
 		}
 
+		/* Remove all exercise sets */
+		$this->db->delete('yyc_plan_exercise_sets', array('exercise_id' => $this->id));
+
 		/* Remove exercise from database */
 		$this->db->delete('yyc_plan_exercises', array('id' => $this->id));
 

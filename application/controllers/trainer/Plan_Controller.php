@@ -115,11 +115,8 @@ class Plan_Controller extends MY_Controller {
 		$exercises = $plan->getExercises();
 		foreach ($exercises AS $exercise) {
 			$images = $exercise->getImages();
-			$sets = $exercise->getSets();
 			$exercise->images = $images;
-			$exercise->sets = $sets;
 			$exercise->imageCount = count($images);
-			vardump($sets);
 		}
 
 		vardump('a');
