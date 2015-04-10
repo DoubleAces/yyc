@@ -82,6 +82,9 @@
 										if ($exercise->description) {
 											?><br /><?=$exercise->description;
 										}
+//										foreach ($exercise->getSets() as $set) {
+//											echo $set;
+//										}
 										?>
 									</div>
 									<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?

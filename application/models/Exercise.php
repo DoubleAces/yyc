@@ -45,4 +45,13 @@ class Exercise extends CI_Model {
 		return $this->db->where('id', $this->plan_id)->get('yyc_training_plans')->row(0, 'Training_Plan');
 	}
 
+	function getSets() {
+		echo "wtf :)";
+		$db = $this->db;
+		$db->select('reps, sets, weight');
+		$db->from('yyc_plan_exercise_sets');
+		$db->where('exercise_id = ' . $this->id);
+		$db->get()->result();
+	}
+
 }
