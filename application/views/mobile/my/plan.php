@@ -49,43 +49,54 @@
 					?>
 					<table>
 						<thead>
-							<tr>
-								<th><?=$exercise->name?></th>
-							</tr>
+						<tr>
+							<th><?=$exercise->name?></th>
+						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									<div class="pull-left" style="width: 63%">
-										<?
-										if ($exercise->reps) {
-											?><label>Korduseid: </label> <?=$exercise->reps?><br /><?;
-										}
-										if ($exercise->breathing) {
-											?><label>Hingamine: </label> <?=$exercise->breathing;
-										}
-										if ($exercise->description) {
-											?><br /><?=$exercise->description;
-										}
+						<tr>
+							<td>
+								<div class="pull-left" style="width: 63%">
+									<?
+									$sets = $exercise->getSets();
+									if ($sets) {
 										?>
-									</div>
-									<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
-										$i = 0;
-										foreach ($exercise->images as $image) :
-											?>
-											<span style="margin-left: 10px; <?=$i > 1 ? 'display: none' : ''?>">
+										<label style="width: 100%">Korduseid:</label>
+										<?
+										foreach ($exercise->getSets() as $set) {
+											echo $set->sets . ' x ';
+											echo $set->reps;
+											if ($set->weight) {
+												echo ' @ ' . $set->weight . 'kg';
+											}
+											?><br/><?
+										}
+									}
+									if ($exercise->breathing) {
+										?><label>Hingamine: </label> <?=$exercise->breathing;
+									}
+									if ($exercise->description) {
+										?><br /><?=$exercise->description;
+									}
+									?>
+								</div>
+								<div class="pull-right exercise-images" style="width: 37%; text-align: right"><?
+									$i = 0;
+									foreach ($exercise->images as $image) :
+										?>
+										<span style="margin-left: 10px; <?=$i > 1 ? 'display: none' : ''?>">
 												<a href="<?=base_url()?>images/exercises/<?=$image->filename?>"><img alt="Harjutuse pilt" src="<?=base_url()?>images/exercises/120x120/<?=$image->filename?>" style="margin-bottom: 10px"></a>
 											</span>
-											<?
-											$i++;
-										endforeach;
-										if ($exercise->imageCount > 2) {
-											?><div><a class="more-pics">Veel pilte</a></div><?
-										}
-										?>
-									</div>
-								</td>
-							</tr>
+										<?
+										$i++;
+									endforeach;
+									if ($exercise->imageCount > 2) {
+										?><div><a class="more-pics">Veel pilte</a></div><?
+									}
+									?>
+								</div>
+							</td>
+						</tr>
 						</tbody>
 					</table>
 				<?

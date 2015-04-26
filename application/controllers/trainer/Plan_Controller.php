@@ -119,9 +119,6 @@ class Plan_Controller extends MY_Controller {
 			$exercise->imageCount = count($images);
 		}
 
-		vardump('a');
-
-
 		$data = array(
 			'client' => $client,
 			'plan' => $plan,
