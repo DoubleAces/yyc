@@ -59,6 +59,9 @@ class Training_Plan extends CI_Model {
 		/* Add sets to exercise */
 		$setCount = count($input['sets']);
 		for ($i = 0; $i < $setCount; $i++) {
+			if ($input['reps'][$i] == 0 || $input['sets'][$i] == 0) {
+				continue;
+			}
 			$data = array(
 				'exercise_id' => $exerciseId,
 				'reps' => $input['reps'][$i],
