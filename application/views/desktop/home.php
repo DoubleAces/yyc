@@ -6,28 +6,31 @@
 
 			<div class="col-md-8">
 
-				<div class="content_left_text" class="headingContainer">
+				<div class="headingContainer" style="color: #999">
 					<h3 class="textAlignLeft">FitCom</h3>
-					<p class="textAlignLeft">aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					<p class="textAlignLeft">Kiirem ja efektiivsem viis suhtluseks!</p>
 				</div>
 
-				<h3 class="m_2 textAlignLeft">Treenerid</h3>
+				<h3 class="m_2 textAlignLeft">Treenerid <?=count($trainers)?></h3>
 				<div class="row about_box" style="padding-bottom: 5%; margin-bottom: 5%; border-bottom: 2px ridge #FFF; margin-right: 0px; margin-left: 0px;">
-					<div class="col-md-6" style="padding-left: 0px;">
+					<?foreach($trainers as $trainer):?>
+						<div class="col-md-6" style="padding-left: 0px;">
 						<div class="box1">
 							<div class="box1_left">
 								<img src="<?=base_url()?>images/desktop/about_img3.jpg" class="img-responsive" alt=""/>
 								<div class="desc1">
-									<h3>Lorem Ipsum<br><span class="m_text">Spinning</span></h3>
-									<p>Lorem ipsum dolor sit amet, consectetuer.</p>
-									<div class="coursel_list">
-										<i class="a_heart"> </i>
-										<i class="like1"> </i>
-									</div>
-									<div class="coursel_list1">
-										<i class="a_twt"> </i>
-										<i class="a_fb"> </i>
-									</div>
+									<h3><?=$trainer->first_name?> <?=$trainer->last_name?>
+<!--										<br><span class="m_text">Spinning</span>-->
+									</h3>
+<!--									<p>Lorem ipsum dolor sit amet, consectetuer.</p>-->
+<!--									<div class="coursel_list">-->
+<!--										<i class="a_heart"> </i>-->
+<!--										<i class="like1"> </i>-->
+<!--									</div>-->
+<!--									<div class="coursel_list1">-->
+<!--										<i class="a_twt"> </i>-->
+<!--										<i class="a_fb"> </i>-->
+<!--									</div>-->
 									<div class="clear"></div>
 								</div>
 							</div>
@@ -40,33 +43,8 @@
 							<div class="clear"></div>
 						</div>
 					</div>
-					<div class="col-md-6" style="padding-right: 0px;">
-						<div class="box1">
-							<div class="box1_left">
-								<img src="<?=base_url()?>images/desktop/about_img4.jpg" class="img-responsive" alt=""/>
-								<div class="desc1">
-									<h3>Lorem Ipsum<br><span class="m_text">Spinning</span></h3>
-									<p>Lorem ipsum dolor sit amet, consectetuer.</p>
-									<div class="coursel_list">
-										<i class="a_heart"> </i>
-										<i class="like1"> </i>
-									</div>
-									<div class="coursel_list1">
-										<i class="a_twt"> </i>
-										<i class="a_fb"> </i>
-									</div>
-									<div class="clear"></div>
-								</div>
-							</div>
-							<div class="box1_right">
-								<h4>Qualifications</h4>
-								<p>Lorem ipsum dolor consect adipiscing elit, diamnonu nibh euismod dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim </p>
-								<h4>Speciality</h4>
-								<p class="para1">diam nonummy euismod tincidunt ut laoreet dolore magna aliquam volutpat.</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
+					<?endforeach?>
+
 					<div class="clear"></div>
 				</div>
 

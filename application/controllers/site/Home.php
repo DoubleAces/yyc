@@ -16,29 +16,16 @@ class Home extends MY_Controller {
 
 	function index() {
 		$activeUser = $this->session->userdata('activeUser');
+		$trainers = $this->db->select('*')
+			->from('yyc_users')
+			->where('is_trainer = 1')->get()->result();
+
 		$data = array(
+			'trainers' => $trainers,
 			'template' => $this->platform . '/home'
 		);
 		$this->load->view($this->session->userdata('platform') . '/page', $data);
 
-//		if (!$activeUser) {
-//			$this->load->view($this->session->userdata('platform') . '/intropage');
-//			return;
-//		}
-//
-//		/* If logged out, show default home, otherwise show trainer/client UI */
-//		if ($activeUser->is_trainer) {
-//			redirect('/trainer/dashboard');
-//			return;
-//		}
-//		$data = array(
-//			'template' => $this->session->userdata('platform') . '/home'
-//		);
-//		$this->load->view($this->session->userdata('platform') . '/page', $data);
-//		else {
-//			redirect('/home');
-//			return;
-//		}
 
 	}
 }
