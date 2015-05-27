@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Zone">
+  <component name="PublishConfigData" serverName="FitCom">
     <serverData>
+      <paths name="FitCom">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Zone">
         <serverdata>
           <mappings>
