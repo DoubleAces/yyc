@@ -361,6 +361,7 @@ if ( ! is_php('5.4'))
 	 *
 	 * @return object
 	 */
+
 	function &get_instance()
 	{
 		return CI_Controller::get_instance();
