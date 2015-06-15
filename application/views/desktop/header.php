@@ -21,9 +21,9 @@
 			<ul class="nav">
 				<li <?if($this->router->fetch_class() == 'home') { ?>class="active"<? }?>><a href="/home">Avaleht</a></li>
 				<li><a href="#">Treenerid</a></li>
-				<li><a href="#">Blogid</a></li>
-				<li><a href="#">Artiklid</a></li>
-				<li><a href="#">Retseptid</a></li>
+<!--				<li><a href="#">Blogid</a></li>-->
+<!--				<li><a href="#">Artiklid</a></li>-->
+<!--				<li><a href="#">Retseptid</a></li>-->
 				<li <?if(in_array($this->router->fetch_class(), array('my', 'client'))) { ?>class="active"<? }?>><a href="/login">Minu konto</a></li>
 			</ul>
 			<script type="text/javascript" src="<?=base_url()?>js/nav.js"></script>

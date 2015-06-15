@@ -45,6 +45,7 @@
 
 			<div class="col-md-8">
 				<h4><?=$plan->name?></h4>
+				<blockquote  style="margin-top: 10px; margin-bottom: 10px; font-size: 13px;"><?=$plan->description?></blockquote>
 				<?foreach($exercises as $exercise) :
 					?>
 					<table>

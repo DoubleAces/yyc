@@ -131,6 +131,8 @@
 					</div>
 				</div>
 
+				<blockquote  style="margin-top: 10px; margin-bottom: 10px; font-size: 13px;"><?=$plan->description?></blockquote>
+
 				<?foreach($exercises as $exercise) :
 					?>
 
