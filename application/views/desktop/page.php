@@ -11,7 +11,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<script src="<?=base_url()?>js/jquery.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){
@@ -26,6 +28,7 @@
 		<script type="text/javascript" src="<?=base_url()?>js/jquery.contentcarousel.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/jquery.easing.1.3.js"></script>
 		<!-- //grid-slider -->
+		<script type="text/javascript" src="<?=base_url()?>js/site.js"></script>
 	</head>
 	<body>
 

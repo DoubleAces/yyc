@@ -5,8 +5,10 @@
 				<li class="facebook"><a href="#"><span> </span></a></li>
 				<li class="twitter"><a href="#"><span> </span></a></li>
 				<li class="instagram"><a href="#"><span> </span></a></li>
+				<li><a href="#"><span class="label label-danger" style="vertical-align: top; border-radius: 10px; font-size: 74%">1</span></a></li>
 			</ul>
 		</div>
+
 		<div class="clear"></div>
 	</div>
 </div>
@@ -14,7 +16,6 @@
 	<div class="container">
 		<div class="logo">
 			<a href="/home" style="color: #FFF; font-size: 28px;">FitCom</a>
-
 		</div>
 		<div class="h_menu4">
 			<a class="toggleMenu" href="#">Menu</a>

@@ -57,6 +57,8 @@ $route['admin'] = "admin/dashboard";
 $route['404_override'] = '';
 $route['home'] = "site/home";
 $route['home/(:any)'] = "site/home/$1";
+$route['trainers/(:num)'] = "site/trainers/trainer/$1";
+
 
 $route['my/dashboard'] = "my/my_dashboard";
 

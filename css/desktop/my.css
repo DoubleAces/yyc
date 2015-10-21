@@ -317,3 +317,39 @@ tbody:hover tr:hover td {
 	text-shadow: 0 1px 0 #fff;
 	cursor: pointer;
 }
+
+.blueButton {
+	background: none;
+	font-size: 0.8125em;
+	padding: 5px 10px;
+	color: #00BFF0;
+	cursor: pointer;
+	outline: none;
+	-webkit-appearance: none;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border: 1px solid #00BFF0;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-bottom: 5px;
+}
+.blueButton:hover{
+	background:#00BFF0;
+	color:#fff;
+}
+
+.blueButton:hover a{
+	color:#fff;
+}
+
+.blueButton a {
+	color: #00BFF0;
+}
+.blueButton a:hover {
+	color: #FFF;
+}
